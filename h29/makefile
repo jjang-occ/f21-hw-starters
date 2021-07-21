@@ -34,5 +34,5 @@ submit: $(EXE)
 	@git commit -m "auto commit `date +"%x %X"`"  > /dev/null 2>> errors.txt; true
 	@git push > /dev/null 2>> errors.txt; true
 	@cat errors.txt 2> /dev/null; true
-	@curl `cat /home/ubuntu/workspace/.submit``tail -n 1 results.txt` https://cs170-console.appspot.com/update ; true
+	@curl `cat /home/ubuntu/workspace/.submit``tail -n 1 results.txt` https://occ-hw-console.appspot.com/update ; true
 	@rm -rf errors.txt 2> /dev/null; true
