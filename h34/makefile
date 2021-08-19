@@ -3,6 +3,7 @@ CXX = @g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -Werror -O0 -ggdb3  -fsanitize=signed-integer-overflow -fsanitize=undefined -Wno-unused-parameter -Wno-unused-variable
 LIBS = $(EXE)
 SRC = $(EXE).cpp
+INC = $(EXE).h
 OBJS = $(EXE).o
 
 $(EXE): $(OBJS) makefile
@@ -30,7 +31,7 @@ test: $(EXE)
 
 submit: $(EXE)
 	@./$(EXE) -t 1> /dev/null 2> results.txt; true
-	@git add $(SRC) results.txt > /dev/null 2> errors.txt; true
+	@git add $(SRC) $(INC) results.txt > /dev/null 2> errors.txt; true
 	@git commit -m "auto commit `date +"%x %X"`"  > /dev/null 2>> errors.txt; true
 	@git push > /dev/null 2>> errors.txt; true
 	@cat errors.txt 2> /dev/null; true
